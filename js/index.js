@@ -39,12 +39,12 @@ const start = () => {
 
 const rememberMyFilms = () => {
   for (let i = 0; i < 2; i++) {
-    let q1 = prompt("Один из последних просмотренных фильмов?", "");
+    let q1 = prompt("Один из последних просмотренных фильмов?", "").trim();
     while (q1 === "" || q1 === null || q1.length > 50) {
       q1 = prompt(
         "Неккоретктно. Пожалуйста повторите какой один из последних просмотренных фильмов?",
         ""
-      );
+      ).trim();
     }
     let q2 = Number(
       prompt("На сколько оцените его?", "Введите число от 1 до 10")
@@ -80,18 +80,15 @@ const showMyDB = (hidden) => {
 };
 
 const writeYourGenres = (genre) => {
-  for (let i=0; i<=2; i++){
-    genre[i] = prompt(`Ваш любимый жанр под номером ${i+1}`);
+  for (let i = 0; i <= 2; i++) {
+    genre[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`);
   }
 };
 
-
-
-
-
-/* start();
+/*start();
 rememberMyFilms();
-detectPersonalLevel(); */
+detectPersonalLevel(); 
 showMyDB(personalMovieDB.privat);
-writeYourGenres(personalMovieDB.genres);
+writeYourGenres(personalMovieDB.genres);*/
+
 

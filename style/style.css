@@ -1,0 +1,10 @@
+.user-item {
+    background-color: #cbe9f5;
+    border-radius: 0.3em;
+    padding: 0.4em;
+    border: 2px solid transparent 
+}
+.user-item:hover {
+    background-color: #efefd7;
+    border: 2px solid #a7a784;
+}
