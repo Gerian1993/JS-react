@@ -94,43 +94,4 @@ const personalMovieDB = {
   },
 };
 
-const students = [
-  "Peter",
-  "Andrew",
-  "Ann",
-  "Mark",
-  "Josh",
-  "Sandra",
-  "Cris",
-  "Bernard",
-  "Takesi",
-  "Sam",
-];
 
-function sortStudentsByGroups(arr) {
-  let newArr = [...arr];
-  newArr.sort();
-  let groups = [];
-  let i = 0;
-  let j = 0;
-  while (i < 3) {
-    groups[i] = [newArr[j], newArr[j + 1], newArr[j + 2]];
-    i++;
-    j += 3;
-  }
-  let otherStudents = "Оставшиеся студенты:";
-  for (let i = 9; i <= newArr.length; i++) {
-    if ((i+1) === newArr.length) {
-      otherStudents += ` ${newArr[i]}`;
-      break;
-    } else if ((i+1) <= newArr.length) {
-      otherStudents += ` ${newArr[i]},`;
-    } else {
-      otherStudents += ' -';
-    }
-  }
-  groups[3] = otherStudents;
-  return groups;
-}
-
-sortStudentsByGroups(students);
