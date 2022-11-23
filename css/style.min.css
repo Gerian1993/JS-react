@@ -110,7 +110,7 @@
 }
 .promo__bg {
   height: 360px;
-  background: url("../img/mars.webp") center center/cover no-repeat;
+  background: url("./img/mars.webp") center center/cover no-repeat;
   background-position: top;
   padding: 107px 0 0 61px;
 }

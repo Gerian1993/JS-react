@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const filmList = document.querySelector(".promo__interactive-list");
 
   const addForm = document.querySelector("form.add");
-  const addFilm = addForm.querySelector("input.adding__input");
+  const inputFilm = addForm.querySelector("input.adding__input");
   const checkbox = addForm.querySelector('[type="checkbox"]');
   const btnForm = addForm.querySelector("button");
-  
+
   const movieDB = {
     movies: [
       "Логан",
@@ -38,12 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   let { movies } = movieDB;
 
-  genre.textContent = "драма";
-  bg.style.backgroundImage = 'url("../img/bg.jpg")';
+  const makeChanges = () => {
+    genre.textContent = "драма";
+    bg.style.backgroundImage = "url('img/bg.jpg')";
+  };
 
   const removeAdv = (adv) => {
     adv.forEach((item) => {
-      item.remove(item);
+      item.remove();
     });
   };
 
@@ -58,9 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
       </li>`;
     });
 
-    document.querySelectorAll(".delete").forEach((btn) => {
+    document.querySelectorAll(".delete").forEach((btn, index) => {
       btn.addEventListener("click", () => {
-        console.log('vla');
+        btn.parentElement.remove();
+        movies.splice(index, 1);
+
+        createMovieDb(arr, list);
       });
     });
   };
@@ -68,24 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
   btnForm.addEventListener("click", (event) => {
     event.preventDefault();
 
-    let inputFilm = addFilm.value;
-    let favorite = checkbox.checked;
+    let addFilm = inputFilm.value;
+    const favorite = checkbox.checked;
 
-    if (inputFilm) {
-      if (inputFilm.length > 21) {
-        inputFilm = addFilm.value.slice(0, 21) + "...";
-        movies.push(inputFilm.toUpperCase());
+    if (addFilm) {
+      if (addFilm.length > 21) {
+        addFilm = inputFilm.value.slice(0, 21) + "...";
+        movies.push(addFilm.toUpperCase());
         createMovieDb(movies, filmList);
+        inputFilm.value = "";
       } else {
-        movies.push(inputFilm.toUpperCase());
+        movies.push(addFilm.toUpperCase());
         createMovieDb(movies, filmList);
+        inputFilm.value = "";
       }
     }
-    if (Boolean(favorite) === true && Boolean(inputFilm) === true) {
+    if (Boolean(favorite) === true && Boolean(addFilm) === true) {
       console.log("Добавляем любимый фильм");
     }
   });
 
+
+  makeChanges();
   removeAdv(advs);
   createMovieDb(movies, filmList);
 });
